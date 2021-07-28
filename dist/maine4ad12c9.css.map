@@ -1,0 +1,1 @@
+{"version":3,"file":"maine4ad12c9.css","mappings":"AAaA,0BACI,qBACA,kDACA,qD","sources":["webpack://rule-engine-settings/./src/App.vue"],"sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\r\n.wrapper{\r\n    background-color: #F00;\r\n    transform: scale(200);\r\n    display: flex;\r\n}\r\n"],"names":[],"sourceRoot":""}
