@@ -14,5 +14,6 @@ module.exports = merge(common, {
         compress: true, // 是否开启压缩
         port: 8088,
         open: true,
+        hot: true
       }
 })
