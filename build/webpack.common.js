@@ -1,11 +1,9 @@
 const { resolve } = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: './src/entry.js',
   target: ['web', 'es5'],
   module: {
     rules: [
@@ -79,9 +77,6 @@ module.exports = {
       filename: '[name][contenthash:8].css',
     }),
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: resolve(__dirname, '../public', 'index.html'),
-    }),
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
