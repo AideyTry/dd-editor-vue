@@ -2,7 +2,9 @@
   <div class="node-wraper">
     <div v-for="(item) in dataTree" :key="item.id" :class="[isChild ? 'tree-childNodes-row' : 'tree-root', { 'multiply-node': dataTree.length > 1 }]">
       <span :class="{'tree-node': true,'leaf-node': !item.children}">
+        <span @click="onDelete(item)">-</span>
         <span>title{{item.name}}</span>
+        <span @click="onAdd(item)">+</span>
       </span>
       <div v-if="item.children" class="tree-childNodes">
         <node :dataTree="item.children" :isChild="true"></node>
@@ -12,6 +14,8 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from "uuid"
+import { useDataShare } from '../utils/shared'
 export default {
   name: 'node',
   props: {
@@ -22,6 +26,21 @@ export default {
     isChild: {
       type: Boolean,
       default: false
+    }
+  },
+  methods: {
+    onAdd(info){
+    const singleData = {
+      id: uuidv4().replace(/-/g, ""),
+      parentId: info.id,
+      name: uuidv4().replace(/-/g, ""),
+    };
+    // 执行命令行，添加节点
+    useDataShare.excute({ command: "add", param: singleData });
+    },
+    onDelete(info){
+    // 执行命令行删除节点
+    useDataShare.excute({ command: "delete", param: info });
     }
   }
 }
@@ -35,7 +54,6 @@ export default {
 }
 .tree-childNodes-row{
   position: relative;
-  display: -webkit-flex;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
