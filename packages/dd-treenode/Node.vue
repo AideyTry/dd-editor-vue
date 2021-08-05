@@ -3,11 +3,12 @@
     <div v-for="(item) in dataTree" :key="item.id" :class="[isChild ? 'tree-childNodes-row' : 'tree-root', { 'multiply-node': dataTree.length > 1 }]">
       <span :class="{'tree-node': true,'leaf-node': !item.children}">
         <span @click="onDelete(item)">-</span>
-        <span>title{{item.name}}</span>
+        <!-- <span>title{{item.name}}</span> -->
+        <node-content :node="item"></node-content>
         <span @click="onAdd(item)">+</span>
       </span>
       <div v-if="item.children" class="tree-childNodes">
-        <node :dataTree="item.children" :isChild="true"></node>
+        <node :dataTree="item.children" :isChild="true" :render-content="renderContent"></node>
       </div>
     </div>
   </div>
@@ -15,7 +16,7 @@
 
 <script>
 import { v4 as uuidv4 } from "uuid"
-import { useDataShare } from '../utils/shared'
+import { useDataShare, useUpdated } from './utils/shared'
 export default {
   name: 'node',
   props: {
@@ -26,7 +27,22 @@ export default {
     isChild: {
       type: Boolean,
       default: false
+    },
+    renderContent: Function
+  },
+  components: {
+    NodeContent: {
+    props: {
+      node: {
+        require: true
+      }
+    },
+    render() {
+        return this.$parent.renderContent(this.node, useUpdated)
+      }
     }
+  },
+  mounted(){
   },
   methods: {
     onAdd(info){
@@ -160,3 +176,4 @@ export default {
 }
 }
 </style>
+

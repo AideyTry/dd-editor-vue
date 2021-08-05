@@ -1,46 +1,40 @@
 <!--
  * @Author: Aiden
  * @Date: 2021-08-03 20:39:03
- * @LastEditTime: 2021-08-05 10:56:23
+ * @LastEditTime: 2021-08-05 18:01:48
  * @LastEditors: Aiden
  * @Description: 
 -->
 <template>
-    <div class="wrapper">
-        <node :dataTree="treeData"></node>
-    </div>
+  <dd-treenode :render-content="renderContent"></dd-treenode>
 </template>
 <script>
-import datas from './data.json'
-import Node from '@/components/Node'
-import { useDataShare, Observer } from './utils/shared'
 export default {
   name: "App",
-  props: {
-      dataTree: {
-          type: Array,
-          default: () => datas
-      }
+  methods: {
+    renderContent(info, useUpdated) {
+      console.log("info======================", info);
+      let renders = null;
+      const newInfo = Object.assign({}, info);
+
+      const onChange = (value) => {
+        newInfo.name = value;
+        // 数据改变的时候通过useUpdated传递修改的某个节点新数据过去
+        useUpdated(newInfo);
+      };
+      renders = (
+        <el-select placeholder="请选择" value={info.name} on-change={onChange}>
+          <el-option value={info.name}></el-option>
+          <el-option value="item2"></el-option>
+          <el-option value="item3"></el-option>
+        </el-select>
+      );
+
+      return renders;
+    },
   },
-  data(){
-      return {
-          treeData: this.dataTree
-      }
-  },
-  components: {
-      Node,
-  },
-  mounted(){
-      useDataShare.excute({command: 'init', param: this.dataTree})
-          // 订阅tree的数据结构是否发生变化，如果发生了变化就及时更新整个树。
-    Observer.subscribe("tree", e => {
-      this.treeData = e.args.msg
-    });
-  }
 };
 </script>
 
 <style lang="scss" scoped>
-.wrapper{
-}
 </style>

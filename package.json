@@ -32,6 +32,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "element-ui": "^2.15.5",
     "uuid": "^8.3.2",
     "vue": "^2.6.14"
   },
