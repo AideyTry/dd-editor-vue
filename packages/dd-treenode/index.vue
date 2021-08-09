@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <node :dataTree="treeData" :render-content="renderContent"></node>
+        <node :dataTree="treeData" :render-content="renderContent" :editorEnable="editorEnable"></node>
     </div>
 </template>
 <script>
@@ -15,6 +15,10 @@ export default {
           default: () => datas
       },
       renderContent: Function,
+      editorEnable: {
+          type: Boolean,
+          default: false
+      }
   },
   data(){
       return {

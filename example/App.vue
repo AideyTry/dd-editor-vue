@@ -1,16 +1,39 @@
 <!--
  * @Author: Aiden
  * @Date: 2021-08-03 20:39:03
- * @LastEditTime: 2021-08-09 12:19:51
+ * @LastEditTime: 2021-08-09 17:42:52
  * @LastEditors: Aiden
  * @Description: 
 -->
 <template>
-  <dd-treenode :render-content="renderContent"></dd-treenode>
+  <dd-treenode :dataTree="treeData" :render-content="renderContent" editorEnable></dd-treenode>
 </template>
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      treeData: [
+        {
+          id: 0,
+          parentId: -1,
+          name: "node",
+          children: [
+            {
+              id: 1,
+              parentId: 0,
+              name: "node1",
+              children: [
+                { id: 111, parentId: 1, name: "node111" },
+                { id: 112, parentId: 1, name: "node112" },
+                { id: 113, parentId: 1, name: "node113" },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+  },
   methods: {
     renderContent(info, useUpdated) {
       let renders = null;
