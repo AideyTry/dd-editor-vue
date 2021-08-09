@@ -82,11 +82,11 @@ export default {
 ```
 
 ## 属性
-参数 | 说明 | 类型 | 可选值 | 默认值
-:----------- | :-----------: | -----------: | :-----------: | -----------:
-dataTree          | 传入的初始值       | Array        | ——       | [{"id": 0,"parentId": -1,"name": "node","children": [{"id": 1,"parentId": 0,"name": "node1","children": [{ "id": 111, "parentId": 1, "name": "node111" },{ "id": 112,"parentId": 1, "name": "node112" }]}]}]
-render-content     | 自定义节点内容                  | Function(info, useUpdated)       | ——       | -
-editorEnable  | 是否为编辑或显示状态   		 | Boolean         | ——       | false
+参数 | 说明 | 类型  | 默认值
+:----------- | :-----------: | -----------: | -----------:
+dataTree          | 传入的初始值       | Array            | [{"id": 0,"parentId": -1,"name": "node","children": [{"id": 1,"parentId": 0,"name": "node1","children": [{ "id": 111, "parentId": 1, "name": "node111" },{ "id": 112,"parentId": 1, "name": "node112" }]}]}]
+render-content     | 自定义节点内容                  | Function(info, useUpdated)         | -
+editorEnable  | 是否为编辑或显示状态   		 | Boolean          | false
 
 ## 事件
 事件名称 | 说明 | 参数

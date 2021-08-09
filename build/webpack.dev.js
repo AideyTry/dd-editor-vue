@@ -13,7 +13,7 @@ module.exports = merge(common, {
     devtool: 'eval-source-map',
     plugins: [
       new HtmlWebpackPlugin({
-        template: resolve(__dirname, '../public', 'index.html'),
+        template: resolve(__dirname, '../example/public', 'index.html'),
       })
     ],
     devServer: {
