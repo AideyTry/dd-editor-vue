@@ -1,0 +1,17 @@
+@import "config.scss";
+
+@mixin b($block){
+    $B: $namespace + '-' + $block !global;
+    .#{$B}{
+        @content;
+    }
+}
+
+@mixin e($element){
+    $E: $element;
+    $selector: &;
+    $currentSelector: $B + "-" + $E;
+    .#{$currentSelector}{
+        @content;
+    }
+}

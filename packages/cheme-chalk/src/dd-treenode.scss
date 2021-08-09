@@ -1,0 +1,122 @@
+@charset "UTF-8";
+@import "common/var.scss";
+@import "mixins/mixins.scss";
+
+@include b(tree-node-wraper){
+
+}
+
+@include b(tree){
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px !important;
+    @include e(childNodes-row){
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        &:last-child{
+            margin-bottom: 0;
+          }
+        &:before{
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            display: block;
+            width: 30px;
+            height: 1px;
+            background-color:#52c41a;
+            content: '';
+          }
+    }
+    @include e(multiply-node){
+        &::after{
+            position: absolute;
+            box-sizing: border-box;
+            left: -30px;
+            top: 0;
+            display: block;
+            width: 30px;
+            height: calc(100% + 10px);
+            border: none;
+            border-left: 1px solid #52c41a;
+            content: '';
+          }
+        &:first-child:after{
+            position: absolute;
+            box-sizing: border-box;
+            left: -30px;
+            top: 50%;
+            display: block;
+            width: 30px;
+            height: calc(100%  - 50% + 10px);
+            border: none;
+            border-left: 1px solid #52c41a;
+            content: '';
+          }
+          &:last-child:after{
+            position: absolute;
+            box-sizing: border-box;
+            left: -30px;
+            display: block;
+            width: 30px;
+            height: calc(100%  - 50%);
+            border: none;
+            border-left: 1px solid #52c41a;
+            content: '';
+          }
+    }
+    @include e(node){
+        display: flex!important;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding:6px 10px;
+        background:#fff;
+        color:#333;
+        min-width:80px;
+        font-size: 12px;
+        border: 1px solid #52c41a;
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-top: 1px solid #52c41a;
+            content: '';
+          }
+        &:first-child::before {
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            display: none;
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-top: 1px solid #52c41a;
+            content: '';
+          }
+          &:after{
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 1px);
+            display: block;
+            width: 30px;
+            height: 1px;
+            border:none;
+            background-color:#52c41a;
+            content: '';
+          }
+    }
+    @include e(leaf-node){
+        &::after {
+            display: none;
+          }
+    }
+    @include e(childNodes){
+        margin-left: 60px;
+    }
+}

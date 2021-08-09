@@ -6,7 +6,6 @@ const TerserPlugin = require('terser-webpack-plugin')
 module.exports = merge(common, {
   mode: 'production',
   entry: './packages/index.js',
-  // target: 'es5',
   output: {
     path: resolve(__dirname, '../lib'),
     // filename: '[name][contenthash:8].js',

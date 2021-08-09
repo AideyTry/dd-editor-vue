@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --config build/webpack.dev.js",
-    "test": "",
-    "build": "webpack --config build/webpack.prod.js"
+    "build": "webpack --config build/webpack.prod.js",
+    "build:theme": "gulp build --gulpfile packages/cheme-chalk/gulpfile.js",
+    "example": "webpack serve --config build/webpack.dev.js"
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
@@ -17,6 +17,10 @@
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^6.2.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-sass": "^5.0.0",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.1.0",
     "postcss": "^8.3.6",
