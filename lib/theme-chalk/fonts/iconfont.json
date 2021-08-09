@@ -1,0 +1,65 @@
+{
+  "id": "1986533",
+  "name": "dd-editor",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "17159798",
+      "name": "redo",
+      "font_class": "-redo",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "17159802",
+      "name": "undo",
+      "font_class": "-undo",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "17159681",
+      "name": "sucess",
+      "font_class": "-sucess",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "17159689",
+      "name": "zoom-in",
+      "font_class": "-zoomin",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "17159692",
+      "name": "zoom-out",
+      "font_class": "-zoomout",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "17159695",
+      "name": "Delete",
+      "font_class": "-delete",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "17159714",
+      "name": "Add",
+      "font_class": "-add",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "17159715",
+      "name": "clear",
+      "font_class": "-clear",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    }
+  ]
+}

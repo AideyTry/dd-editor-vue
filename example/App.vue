@@ -1,7 +1,7 @@
 <!--
  * @Author: Aiden
  * @Date: 2021-08-03 20:39:03
- * @LastEditTime: 2021-08-05 18:01:48
+ * @LastEditTime: 2021-08-09 12:19:51
  * @LastEditors: Aiden
  * @Description: 
 -->
@@ -13,7 +13,6 @@ export default {
   name: "App",
   methods: {
     renderContent(info, useUpdated) {
-      console.log("info======================", info);
       let renders = null;
       const newInfo = Object.assign({}, info);
 

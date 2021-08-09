@@ -1,7 +1,7 @@
 /*
  * @Author: Aiden
  * @Date: 2021-08-06 13:47:46
- * @LastEditTime: 2021-08-06 14:33:13
+ * @LastEditTime: 2021-08-09 13:44:35
  * @LastEditors: Aiden
  * @Description:
  * @Email: aiden.dai@bayconnect.com.cn
@@ -23,4 +23,11 @@ function compile() {
     .pipe(dest('./lib'))
 }
 
-exports.build = series(compile)
+// 处理字体图标
+function copyfont() {
+  return src(`./src/fonts/**`)
+    .pipe(cssmin())
+    .pipe(dest('./lib/fonts'));
+}
+
+exports.build = series(compile, copyfont)

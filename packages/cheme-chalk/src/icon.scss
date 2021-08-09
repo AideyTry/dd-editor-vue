@@ -1,0 +1,51 @@
+@charset "UTF-8";
+@import "./common/var.scss";
+@font-face {
+    font-family: "dde-icons"; /* Project id 1986533 */
+    src: url('#{$--font-path}/iconfont.woff2?t=1628486834060') format('woff2'),
+         url('#{$--font-path}/iconfont.woff?t=1628486834060') format('woff'),
+         url('#{$--font-path}/iconfont.ttf?t=1628486834060') format('truetype');
+  }
+  
+  .iconfont {
+    font-family: "dde-icons" !important;
+    padding: 4px;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-redo:before {
+    content: "\e61c";
+  }
+  
+  .icon-undo:before {
+    content: "\e61d";
+  }
+  
+  .icon-sucess:before {
+    content: "\e614";
+  }
+  
+  .icon-zoomin:before {
+    content: "\e615";
+  }
+  
+  .icon-zoomout:before {
+    content: "\e616";
+  }
+  
+  .icon-delete:before {
+    content: "\e617";
+  }
+  
+  .icon-add:before {
+    content: "\e618";
+  }
+  
+  .icon-clear:before {
+    content: "\e619";
+  }
+  
+  

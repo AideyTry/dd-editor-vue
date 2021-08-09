@@ -69,6 +69,23 @@ module.exports = {
           'sass-loader',
         ],
       },
+      // https://webpack.js.org/guides/asset-management/#loading-images
+      // https://www.jianshu.com/p/36e972b19b2
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+        //解析
+        parser: {
+          //转base64的条件
+          dataUrlCondition: {
+            maxSize: 25 * 1024, // 25kb
+          }
+        }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: 'asset/resource',
+      }
     ],
   },
   plugins: [

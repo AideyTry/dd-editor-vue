@@ -1,11 +1,11 @@
 <template>
   <div class="dde-node-wraper">
     <div v-for="(item) in dataTree" :key="item.id" :class="[isChild ? 'dde-tree-childNodes-row' : 'dde-tree', { 'dde-tree-multiply-node': dataTree.length > 1 }]">
-      <span :class="{'dde-tree-node': true,'dde-leaf-node': !item.children}">
-        <span @click="onDelete(item)">-</span>
+      <span style="cursor: pointer" :class="{'dde-tree-node': true,'dde-tree-leaf-node': !item.children}">
+        <span class="iconfont icon-clear" @click="onDelete(item)"></span>
         <!-- <span>title{{item.name}}</span> -->
         <node-content :node="item"></node-content>
-        <span @click="onAdd(item)">+</span>
+        <span class="iconfont icon-add" style="cursor: pointer" @click="onAdd(item)"></span>
       </span>
       <div v-if="item.children" class="dde-tree-childNodes">
         <node :dataTree="item.children" :isChild="true" :render-content="renderContent"></node>
