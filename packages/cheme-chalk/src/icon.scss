@@ -7,7 +7,7 @@
          url('#{$--font-path}/iconfont.ttf?t=1628486834060') format('truetype');
   }
   
-  .iconfont {
+  [class^="dde-icon-"], [class*=" dde-icon-"] {
     font-family: "dde-icons" !important;
     padding: 4px;
     font-size: 16px;
@@ -16,35 +16,35 @@
     -moz-osx-font-smoothing: grayscale;
   }
   
-  .icon-redo:before {
+  .dde-icon-redo:before {
     content: "\e61c";
   }
   
-  .icon-undo:before {
+  .dde-icon-undo:before {
     content: "\e61d";
   }
   
-  .icon-sucess:before {
+  .dde-icon-sucess:before {
     content: "\e614";
   }
   
-  .icon-zoomin:before {
+  .dde-icon-zoomin:before {
     content: "\e615";
   }
   
-  .icon-zoomout:before {
+  .dde-icon-zoomout:before {
     content: "\e616";
   }
   
-  .icon-delete:before {
+  .dde-icon-delete:before {
     content: "\e617";
   }
   
-  .icon-add:before {
+  .dde-icon-add:before {
     content: "\e618";
   }
   
-  .icon-clear:before {
+  .dde-icon-clear:before {
     content: "\e619";
   }
   

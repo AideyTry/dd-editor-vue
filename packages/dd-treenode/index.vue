@@ -1,11 +1,15 @@
 <template>
     <div class="wrapper">
+            <div style="margin-bottom: 20px;">
+      <tree-header />
+    </div>
         <node :dataTree="treeData" :render-content="renderContent" :editorEnable="editorEnable"></node>
     </div>
 </template>
 <script>
 import datas from './data.json'
 import Node from './Node.vue'
+import treeHeader from './Header.vue'
 import { useDataShare, Observer } from './utils/shared'
 export default {
   name: "dd-treenode",
@@ -27,6 +31,7 @@ export default {
   },
   components: {
       Node,
+      treeHeader
   },
   mounted(){
       useDataShare.excute({command: 'init', param: this.dataTree})
