@@ -13,6 +13,13 @@
 
 - 使用npm publish 发布
 
+- 发布时可能会出现Forbidden错误，则需要去npm官网验证一下邮箱
+
+- 如果发布失败提示权限问题,请执行以下命令
+```
+ npm publish --access public
+```
+
 ###  注意：语义化版本
 ```bash
 在package.json文件中配置version，例如：1.0.0

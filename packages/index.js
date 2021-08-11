@@ -1,7 +1,7 @@
 /*
  * @Author: Aiden
  * @Date: 2021-08-05 12:10:09
- * @LastEditTime: 2021-08-05 14:03:30
+ * @LastEditTime: 2021-08-10 20:48:35
  * @LastEditors: Aiden
  * @Description: 
  * @Email: aiden.dai@bayconnect.com.cn
@@ -23,5 +23,6 @@ if(typeof window !== 'undefined' && window.Vue){
 
 export default {
     install,
+    ...components,
     version
 }

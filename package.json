@@ -1,8 +1,17 @@
 {
-  "name": "dd-editor",
+  "name": "dd-editor-vue",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
   "license": "MIT",
+  "style": "lib/theme-chalk/index.css",
+  "files": [
+    "lib",
+    "packages"
+  ],
+  "keywords": [
+    "dd-editor",
+    "mind"
+  ],
   "scripts": {
     "build": "webpack --config build/webpack.prod.js",
     "build:theme": "rimraf packages/*/lib && gulp build --gulpfile packages/cheme-chalk/gulpfile.js && cp-cli packages/cheme-chalk/lib lib/theme-chalk",

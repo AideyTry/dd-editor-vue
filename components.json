@@ -1,0 +1,5 @@
+{
+
+    "index": "./packages/index.js",
+    "ddTreenode": "./packages/dd-treenode/index.js"
+}

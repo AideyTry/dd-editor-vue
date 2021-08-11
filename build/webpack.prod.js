@@ -3,9 +3,11 @@ const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 const TerserPlugin = require('terser-webpack-plugin')
 
+const Components = require('../components.json')
+
 module.exports = merge(common, {
   mode: 'production',
-  entry: './packages/index.js',
+  entry: Components,
   output: {
     path: resolve(__dirname, '../lib'),
     // filename: '[name][contenthash:8].js',
