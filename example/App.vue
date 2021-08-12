@@ -1,12 +1,12 @@
 <!--
  * @Author: Aiden
  * @Date: 2021-08-03 20:39:03
- * @LastEditTime: 2021-08-09 17:42:52
+ * @LastEditTime: 2021-08-12 13:39:05
  * @LastEditors: Aiden
  * @Description: 
 -->
 <template>
-  <dd-treenode :dataTree="treeData" :render-content="renderContent" editorEnable></dd-treenode>
+  <dd-treenode :dataTree="treeData" :render-content="renderContent" editorEnable toolbar></dd-treenode>
 </template>
 <script>
 export default {

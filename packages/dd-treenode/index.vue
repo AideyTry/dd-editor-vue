@@ -1,49 +1,52 @@
 <template>
-    <div class="wrapper">
-            <div style="margin-bottom: 20px;">
+  <div class="wrapper">
+    <div style="margin-bottom: 20px" v-if="toolbar">
       <tree-header />
     </div>
-        <node :dataTree="treeData" :render-content="renderContent" :editorEnable="editorEnable"></node>
-    </div>
+    <node
+      :dataTree="treeData"
+      :render-content="renderContent"
+      :editorEnable="editorEnable"
+    ></node>
+  </div>
 </template>
 <script>
-import datas from './data.json'
-import Node from './Node.vue'
-import treeHeader from './Header.vue'
-import { useDataShare, Observer } from './utils/shared'
+import datas from "./data.json";
+import Node from "./Node.vue";
+import treeHeader from "./Header.vue";
+import { useDataShare, Observer } from "./utils/shared";
 export default {
   name: "dd-treenode",
   props: {
-      dataTree: {
-          type: Array,
-          default: () => datas
-      },
-      renderContent: Function,
-      editorEnable: {
-          type: Boolean,
-          default: false
-      }
+    dataTree: {
+      type: Array,
+      default: () => datas,
+    },
+    renderContent: Function,
+    editorEnable: {
+      type: Boolean,
+      default: false,
+    },
+    toolbar: {
+      type: Boolean,
+      default: false,
+    },
   },
-  data(){
-      return {
-          treeData: this.dataTree
-      }
+  data() {
+    return {
+      treeData: this.dataTree,
+    };
   },
   components: {
-      Node,
-      treeHeader
+    Node,
+    treeHeader,
   },
-  mounted(){
-      useDataShare.excute({command: 'init', param: this.dataTree})
-          // 订阅tree的数据结构是否发生变化，如果发生了变化就及时更新整个树。
-    Observer.subscribe("tree", e => {
-      this.treeData = e.args.msg
+  mounted() {
+    useDataShare.excute({ command: "init", param: this.dataTree });
+    // 订阅tree的数据结构是否发生变化，如果发生了变化就及时更新整个树。
+    Observer.subscribe("tree", (e) => {
+      this.treeData = e.args.msg;
     });
-  }
+  },
 };
 </script>
-
-<style lang="scss" scoped>
-.wrapper{
-}
-</style>

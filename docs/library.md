@@ -33,4 +33,26 @@ export default {
 }
 ```
 
+### 按需加载
+
 ### 样式分离
+#### 源码theme-chalk目录中存放所有组件的样式
+```
+样式均加了前缀dde-
+配置见mixins文件夹下的mixins.scss文件
+@import "config.scss";
+@mixin b($block){
+    $B: $namespace + '-' + $block !global;
+    .#{$B}{
+        @content;
+    }
+}
+
+```
+
+### 自定义字体
+```
+使用iconfont字体图标库，https://www.iconfont.cn/
+设置自定义图标dde-icons，详细见样式icon.scss
+使用时字体图标均加dde-前缀
+```

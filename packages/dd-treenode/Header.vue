@@ -52,13 +52,14 @@ export default {
     changeSize(action) {
       switch (action.type) {
         case "increment":
-          // eslint-disable-next-line no-case-declarations
           const counts = this.scaleCount + 0.1;
           this.setZoom(action.ref, counts);
           this.scaleCount = counts;
           break;
         case "decrement":
-          // eslint-disable-next-line no-case-declarations
+          if(this.scaleCount <= 0.8){
+            return false
+          }
           const dCount = this.scaleCount - 0.1;
           if (dCount <= 0.1) {
             this.scaleCount = 0.1;
@@ -85,22 +86,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.dde-header-wraper {
-  display: flex;
-  align-items: center;
-  height: 45px;
-  background-color: #eee;
-}
-.dde-toolbar-icon {
-  margin-left: 10px;
-  display: flex;
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
-}
-.dde-toolbar-icon-default {
-  opacity: 0.5;
-}
-</style>
