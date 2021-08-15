@@ -1,7 +1,7 @@
 ## 安装
 
 ```bash
-npm install dd-editor --save
+npm install dd-editor-vue --save
 ```
 或
 ```bash

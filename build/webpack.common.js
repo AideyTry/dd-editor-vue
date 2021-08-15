@@ -1,10 +1,21 @@
 const { resolve } = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   target: ['web', 'es5'],
+  mode: 'production',
+  entry: './packages/index.js',
+  output: {
+    path: resolve(__dirname, '../lib'),
+    filename: 'dd-editor-common.js',
+    library: "dd-editor-vue",
+    libraryExport: 'default',
+    libraryTarget: "umd", // 通用模块定义
+    umdNamedDefine: true,
+  },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -89,7 +100,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name][contenthash:8].css',
     }),

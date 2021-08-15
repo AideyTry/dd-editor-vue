@@ -1,8 +1,10 @@
 {
   "name": "dd-editor-vue",
-  "version": "1.0.0",
-  "main": "lib/index.js",
+  "version": "1.0.1",
+  "main": "lib/dd-editor-common.js",
   "license": "MIT",
+  "homepage": "https://github.com/aidenfly/dd-editor-vue.git",
+  "repository": "https://github.com/aidenfly/dd-editor-vue.git",
   "style": "lib/theme-chalk/index.css",
   "files": [
     "lib",
@@ -13,7 +15,10 @@
     "mind"
   ],
   "scripts": {
+    "clean": "rimraf lib && rimraf packages/*/lib",
     "build": "webpack --config build/webpack.prod.js",
+    "common": "webpack --config build/webpack.common.js",
+    "dist": "yarn clean && yarn common && yarn build && build:theme",
     "build:theme": "rimraf packages/*/lib && gulp build --gulpfile packages/cheme-chalk/gulpfile.js && cp-cli packages/cheme-chalk/lib lib/theme-chalk",
     "example": "webpack serve --config build/webpack.dev.js"
   },

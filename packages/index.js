@@ -1,13 +1,13 @@
 /*
  * @Author: Aiden
  * @Date: 2021-08-05 12:10:09
- * @LastEditTime: 2021-08-10 20:48:35
+ * @LastEditTime: 2021-08-12 14:16:19
  * @LastEditors: Aiden
  * @Description: 
  * @Email: aiden.dai@bayconnect.com.cn
  */
 import ddTreenode from './dd-treenode'
-const version = '0.0.1'
+const version = '1.0.1'
 
 const components = [ddTreenode]
 

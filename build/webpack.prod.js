@@ -12,7 +12,6 @@ module.exports = merge(common, {
     path: resolve(__dirname, '../lib'),
     // filename: '[name][contenthash:8].js',
     filename: '[name].js',
-    library: "dd-editor",
     libraryExport: 'default',
     libraryTarget: "umd", // 通用模块定义
     umdNamedDefine: true,
