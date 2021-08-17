@@ -12,9 +12,19 @@ module.exports = merge(common, {
     path: resolve(__dirname, '../lib'),
     // filename: '[name][contenthash:8].js',
     filename: '[name].js',
-    libraryExport: 'default',
-    libraryTarget: "umd", // 通用模块定义
-    umdNamedDefine: true,
+    // libraryExport: 'default',
+    // libraryTarget: 'commonjs2',
+    // libraryTarget: "umd", // 通用模块定义
+    // umdNamedDefine: true,
+    // libraryTarget: 'umd',
+    // library: 'dd-editor-vue',
+    // umdNamedDefine: true,
+    // globalObject: 'typeof self !== \'undefined\' ? self : this',
+    library: {
+      // note there's no `name` here
+      // name: 'dd-editor-vue',
+      type: 'commonjs2',
+    },
   },
   devtool: 'source-map',
   // it's important!!!

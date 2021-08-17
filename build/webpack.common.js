@@ -10,10 +10,20 @@ module.exports = {
   output: {
     path: resolve(__dirname, '../lib'),
     filename: 'dd-editor-common.js',
-    library: "dd-editor-vue",
-    libraryExport: 'default',
-    libraryTarget: "umd", // 通用模块定义
-    umdNamedDefine: true,
+    // library: "dd-editor-vue",
+    // libraryExport: 'default',
+    // libraryTarget: 'commonjs2',
+    // libraryTarget: "umd", // 通用模块定义
+    library: {
+      // note there's no `name` here
+      // name: 'dd-editor-vue',
+      type: 'commonjs2',
+    },
+    // umdNamedDefine: true,
+    // libraryTarget: 'umd',
+    // library: 'dd-editor-vue',
+    // umdNamedDefine: true,
+    // globalObject: 'typeof self !== \'undefined\' ? self : this',
   },
   devtool: 'source-map',
   module: {
