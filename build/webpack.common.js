@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: resolve(__dirname, '../lib'),
     filename: 'dd-editor-common.js',
+    libraryExport: 'default',
     library: {
       type: 'commonjs2',
     }

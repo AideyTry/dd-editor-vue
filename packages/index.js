@@ -1,7 +1,7 @@
 /*
  * @Author: Aiden
  * @Date: 2021-08-05 12:10:09
- * @LastEditTime: 2021-08-18 14:59:54
+ * @LastEditTime: 2021-08-18 17:42:24
  * @LastEditors: Aiden
  * @Description: 
  * @Email: aiden.dai@bayconnect.com.cn
@@ -22,6 +22,6 @@ if(typeof window !== 'undefined' && window.Vue){
 
 export default {
     install,
-    ...components,
+    ddTreenode,
     version: process.env.VERSION
 }

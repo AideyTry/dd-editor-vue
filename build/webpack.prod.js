@@ -11,6 +11,7 @@ module.exports = merge(common, {
   output: {
     path: resolve(__dirname, '../lib'),
     filename: '[name].js',
+    libraryExport: 'default',
     library: {
       type: 'commonjs2',
     },

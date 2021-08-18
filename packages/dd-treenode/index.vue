@@ -16,7 +16,8 @@ import Node from "./Node.vue";
 import treeHeader from "./Header.vue";
 import { useDataShare, Observer } from "./utils/shared";
 export default {
-  name: "dd-treenode",
+  name: "ddTreenode",
+  componentName: "ddTreenode",
   props: {
     dataTree: {
       type: Array,

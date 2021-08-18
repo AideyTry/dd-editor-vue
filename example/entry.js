@@ -2,8 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import ElementUI from 'element-ui'
 import DDEditor from '../lib/dd-editor-common.js'
+// import DDEditor from '../packages/index'
+import {  ddTreenode } from '../lib'
 import 'element-ui/lib/theme-chalk/index.css';
 import '../lib/theme-chalk/index.css'
+
+console.log('DDEditor====', DDEditor)
+console.log('ElementUI===', ElementUI)
+console.log('ddTreenode===', ddTreenode)
 
 Vue.use(DDEditor)
 
