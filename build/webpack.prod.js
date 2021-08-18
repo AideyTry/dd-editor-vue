@@ -10,19 +10,8 @@ module.exports = merge(common, {
   entry: Components,
   output: {
     path: resolve(__dirname, '../lib'),
-    // filename: '[name][contenthash:8].js',
     filename: '[name].js',
-    // libraryExport: 'default',
-    // libraryTarget: 'commonjs2',
-    // libraryTarget: "umd", // 通用模块定义
-    // umdNamedDefine: true,
-    // libraryTarget: 'umd',
-    // library: 'dd-editor-vue',
-    // umdNamedDefine: true,
-    // globalObject: 'typeof self !== \'undefined\' ? self : this',
     library: {
-      // note there's no `name` here
-      // name: 'dd-editor-vue',
       type: 'commonjs2',
     },
   },
@@ -35,16 +24,5 @@ module.exports = merge(common, {
       commonjs2: 'vue',
       amd: 'vue',
     },
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        extractComments: false, //不将注释提取到单独的文件中
-      }),
-    ],
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
+  }
 })

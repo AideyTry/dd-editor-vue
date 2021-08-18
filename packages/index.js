@@ -1,13 +1,12 @@
 /*
  * @Author: Aiden
  * @Date: 2021-08-05 12:10:09
- * @LastEditTime: 2021-08-15 19:15:36
+ * @LastEditTime: 2021-08-18 14:59:54
  * @LastEditors: Aiden
  * @Description: 
  * @Email: aiden.dai@bayconnect.com.cn
  */
 import ddTreenode from './dd-treenode'
-const version = '1.0.2'
 
 const components = [ddTreenode]
 
@@ -24,5 +23,5 @@ if(typeof window !== 'undefined' && window.Vue){
 export default {
     install,
     ...components,
-    version
+    version: process.env.VERSION
 }

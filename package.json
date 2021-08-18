@@ -1,6 +1,6 @@
 {
   "name": "dd-editor-vue",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "main": "lib/dd-editor-common.js",
   "license": "MIT",
   "homepage": "https://github.com/aidenfly/dd-editor-vue.git",

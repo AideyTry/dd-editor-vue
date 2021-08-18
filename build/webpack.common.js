@@ -1,7 +1,8 @@
 const { resolve } = require('path')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const pkg = require('../package.json');
 
 module.exports = {
   target: ['web', 'es5'],
@@ -10,20 +11,9 @@ module.exports = {
   output: {
     path: resolve(__dirname, '../lib'),
     filename: 'dd-editor-common.js',
-    // library: "dd-editor-vue",
-    // libraryExport: 'default',
-    // libraryTarget: 'commonjs2',
-    // libraryTarget: "umd", // 通用模块定义
     library: {
-      // note there's no `name` here
-      // name: 'dd-editor-vue',
       type: 'commonjs2',
-    },
-    // umdNamedDefine: true,
-    // libraryTarget: 'umd',
-    // library: 'dd-editor-vue',
-    // umdNamedDefine: true,
-    // globalObject: 'typeof self !== \'undefined\' ? self : this',
+    }
   },
   devtool: 'source-map',
   module: {
@@ -115,6 +105,9 @@ module.exports = {
       filename: '[name][contenthash:8].css',
     }),
     new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.VERSION': `'${pkg.version}'`
+  })
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
