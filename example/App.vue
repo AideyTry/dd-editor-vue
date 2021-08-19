@@ -6,7 +6,12 @@
  * @Description: 
 -->
 <template>
-  <dd-treenode :dataTree="treeData" :render-content="renderContent" editorEnable toolbar></dd-treenode>
+  <dd-treenode
+    :data-tree="treeData"
+    :render-content="renderContent"
+    editor-enable
+    toolbar
+  />
 </template>
 <script>
 export default {

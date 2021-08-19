@@ -4,6 +4,7 @@ const common = require('./webpack.common.js')
 const TerserPlugin = require('terser-webpack-plugin')
 
 const Components = require('../components.json')
+const config = require('./config');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -17,13 +18,25 @@ module.exports = merge(common, {
     },
   },
   devtool: 'source-map',
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        }
+      })
+    ]
+  },
+  externals: config.externals,
   // it's important!!!
-  externals: {
-    vue: {
-      root: 'Vue',
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue',
-    },
-  }
+  // externals: {
+    // vue: {
+    //   root: 'Vue',
+    //   commonjs: 'vue',
+    //   commonjs2: 'vue',
+    //   amd: 'vue',
+    // },
+  // }
 })

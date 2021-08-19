@@ -1,5 +1,5 @@
 {
 
     "index": "./packages/index.js",
-    "ddTreenode": "./packages/dd-treenode/index.js"
+    "dd-treenode": "./packages/dd-treenode/index.js"
 }

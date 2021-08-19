@@ -34,6 +34,10 @@ export default {
 ```
 
 ### 按需加载
+```bash
+# 通过components.json配置要打包出去的组件
+# webpack.prod.js配置多入口，最终打包出去多个组件
+```
 
 ### 样式分离
 #### 源码theme-chalk目录中存放所有组件的样式
@@ -55,4 +59,15 @@ export default {
 使用iconfont字体图标库，https://www.iconfont.cn/
 设置自定义图标dde-icons，详细见样式icon.scss
 使用时字体图标均加dde-前缀
+```
+
+### 调试npm
+```bash
+# 组件库的项目中输入指令： npm link
+# 测试的项目中输入指令： npm link dd-editor-vue
+```
+
+### 解决打包后的eslint报错
+```
+"lint": "eslint --fix --ext .js,.vue",
 ```
