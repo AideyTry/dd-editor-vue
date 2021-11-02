@@ -8,14 +8,14 @@ module.exports = {
   target: ['web', 'es5'],
   mode: 'production',
   entry: './packages/index.js',
-  output: {
-    path: resolve(__dirname, '../lib'),
-    filename: 'dd-editor-common.js',
-    libraryExport: 'default',
-    library: {
-      type: 'commonjs2',
-    }
-  },
+  // output: {
+  //   path: resolve(__dirname, '../lib'),
+  //   filename: 'dd-editor-common.js',
+  //   libraryExport: 'default',
+  //   library: {
+  //     type: 'commonjs2',
+  //   }
+  // },
   devtool: 'source-map',
   module: {
     rules: [

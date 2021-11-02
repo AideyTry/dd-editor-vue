@@ -1,27 +1,35 @@
 <template>
   <div class="wrapper">
-    <div style="margin-bottom: 20px" v-if="toolbar">
-      <tree-header />
+    <div
+      v-if="toolbar"
+      style="margin-bottom: 20px"
+    >
+      <tree-header :use-undo-redo="useUndoRedo" />
     </div>
     <node
-      :dataTree="treeData"
+      :data-tree="dataTree"
       :render-content="renderContent"
-      :editorEnable="editorEnable"
-    ></node>
+      :editor-enable="editorEnable"
+      :use-undo-redo="useUndoRedo"
+    />
   </div>
 </template>
 <script>
-import datas from "./data.json";
+// import datas from "./data.json";
 import Node from "./Node.vue";
 import treeHeader from "./Header.vue";
-import { useDataShare, Observer } from "./utils/shared";
+import { UndoRedoWrapper } from "./utils/shared";
 export default {
-  name: "ddTreenode",
+  name: "DdTreenode",
   componentName: "ddTreenode",
+  components: {
+    Node,
+    treeHeader,
+  },
   props: {
     dataTree: {
       type: Array,
-      default: () => datas,
+      default: () => [],
     },
     renderContent: Function,
     editorEnable: {
@@ -31,23 +39,22 @@ export default {
     toolbar: {
       type: Boolean,
       default: false,
-    },
+    }
   },
   data() {
     return {
-      treeData: this.dataTree,
+      useUndoRedo: {}
     };
   },
-  components: {
-    Node,
-    treeHeader,
-  },
   mounted() {
-    useDataShare.excute({ command: "init", param: this.dataTree });
-    // 订阅tree的数据结构是否发生变化，如果发生了变化就及时更新整个树。
-    Observer.subscribe("tree", (e) => {
-      this.treeData = e.args.msg;
-    });
+    this.useUndoRedo = new UndoRedoWrapper()
+    console.log('this.useUndoRedo===', this.useUndoRedo)
+    this.useUndoRedo.save('data', this.dataTree)
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.wrapper {
+}
+</style>

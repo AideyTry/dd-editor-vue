@@ -7,21 +7,21 @@ module.exports = merge(common, {
   mode: 'development',
   entry: './example/entry.js',
   output: {
-    path: resolve(__dirname, '../dist'),
+    path: resolve(__dirname, '../lib'),
     filename: '[name].js',
   },
   module: {
     rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        options: {
-          cache: true,
-          fix: true,
-        },
-        exclude: [/node_modules/, resolve(__dirname, '../lib')],
-      },
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   options: {
+      //     cache: true,
+      //     fix: true,
+      //   },
+      //   exclude: [/node_modules/],
+      // },
     ],
   },
   devtool: 'eval-source-map',

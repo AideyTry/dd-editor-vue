@@ -1,130 +1,141 @@
-import { treeToList, toTree, deleteNode, Stack, unique } from "./util";
+import { Stack } from "./util";
 
 /**
- * @description: 观察者模式封装
+ * @description: UndoRedo
+ * @param {*}
+ * @Author: Aiden
+ * @return {*}
  */
-export const Observer = (function() {
-  // 消息队列
-  const _messages = {};
-  return {
-    // 订阅（注册）
-    subscribe: function(type, fn) {
-      // 如果消息不存在则英国创建一个消息
-      if (typeof _messages[type] === "undefined") {
-        _messages[type] = [fn];
-      } else {
-        // 将动作方法推入该消息对应的动作执行序列中，这样做的目的是保证多个模块注册统一则消息时能顺利执行
-        _messages[type].push(fn);
-      }
-    },
-    // 注销
-    unSubScribe: function(type, fn) {
-      if (_messages[type] instanceof Array) {
-        for (let i = _messages[type].length - 1; i >= 0; i--) {
-          _messages[type][i] === fn && _messages[type].splice(i, 1);
-        }
-      }
-    },
-    // 发布
-    dispatch: function(type, args) {
-      if (!_messages[type]) return;
-      const events = {
-        type, // 消息类型
-        args: args || {} // 携带的参数
-      };
-      for (let i = 0; i < _messages[type].length; i++) {
-        _messages[type][i].call(this, events);
-      }
+  class UndoRedo {
+    constructor(params){
+      this.params = params;
     }
-  };
-})();
-
-/**
- * @description: 命令模式实现节点的增删以及undo/redo操作
- */
-const useDataShare = (() => {
-  let data = [];
-  let undoStack = new Stack();
-  let redoStack = new Stack();
-  const Action = {
-    init: info => {
-      data = JSON.parse(JSON.stringify(Object.assign([], info)));
-      data = treeToList(data);
-    },
-    add: info => {
-      const list = JSON.parse(JSON.stringify(data));
-      undoStack.push(list);
-      console.log('undoStack=', undoStack)
-      data.push(info);
-      Action.retrieve();
-    },
-    update: info => {
-      const list = JSON.parse(JSON.stringify(data));
-      const newList = list.map(item => {
-        if(item.id === info.id){
-          return info
-        } else {
-          return item
-        }
-      })
-      data = unique(newList)
-      Action.retrieve();
-    },
-    delete: info => {
-      const list = JSON.parse(JSON.stringify(data));
-      undoStack.push(list);
-      const newData = deleteNode(toTree(data, -1), info);
-      data = newData;
-      Action.retrieve();
-    },
-    undo: () => {
-      if (!undoStack.isEmpty()) {
-        const list = JSON.parse(JSON.stringify(data));
-        redoStack.push(list);
-        data = undoStack.pop();
-        Action.retrieve();
-      }
-    },
-    redo: () => {
-      if (!redoStack.isEmpty()) {
-        const list = JSON.parse(JSON.stringify(data));
-        undoStack.push(list);
-        data = redoStack.pop();
-        Action.retrieve();
-      }
-    },
-    retrieve: () => {
-      const result = toTree(data, -1);
-      Observer.dispatch("tree", { msg: result });
-      return result;
+    undo(){
+      // 自己实现
     }
-  };
-  return {
-    // 命令接口
-    excute: function(msg) {
-      if (!msg) {
-        return;
-      }
-      if (msg.length) {
-        for (let i = 0; i < msg.length; i++) {
-          this(msg[i]);
-        }
-      } else {
-        Action[msg.command].call(Action, msg.param);
-      }
-    },
-    stack: {
-      undoStack,
-      redoStack
+    redo(){
+      // 自己实现
     }
-  };
-})();
-
-const useUpdated = (dataInfo) => {
-  if(dataInfo.children){
-    delete dataInfo.children
   }
-  useDataShare.excute({ command: "update", param: dataInfo });
+
+  class AddNode extends UndoRedo {
+    constructor(props){
+      super(props)
+      this.parent = props.parent
+      this.target = {
+        id: props.data.id,
+        name: props.data.name,
+        parentId: props.parent.id,
+        children: []
+      }
+      this.parent.children.push(this.target)
+      this.target.index = this.parent.children.length - 1
+    }
+    undo(){
+        this.parent.children.pop()
+    }
+    redo(){
+        this.parent.children.push(this.target)
+    }
+  }
+
+  class UpdateNode extends UndoRedo {
+    constructor(props){
+      super(props)
+      this.name = props.node.name
+      this.oldName = props.oldName
+      this.target = props.node
+    }
+    undo(){
+      this.target.name = this.oldName;
+    }
+    redo(){
+      this.target.name = this.name;
+    }
+  }
+
+  class RemoveNode extends UndoRedo {
+    constructor(props){
+      super(props)
+      this.parent = props.parent
+      this.target = props.target
+      for(let i = 0; i < this.parent.children.length; i++){
+        if(this.target.id === this.parent.children[i].id){
+          this.parent.children.splice(i, 1)
+          break
+        }
+      }
+    }
+    undo(){
+      const tempParent = JSON.parse(JSON.stringify(this.parent.children))
+      if(tempParent.length <=0 ){
+        this.parent.children.push(this.target)
+      } else if(tempParent.length === 1){
+        if(this.target.index > tempParent[0].index){
+          this.parent.children.splice(1, 0 ,this.target)
+        } else {
+          this.parent.children.splice(0, 0 ,this.target)
+        }
+      }else {
+        for(let i = 0; i < tempParent.length; i++){
+          if(this.target.index > tempParent[i].index && this.target.index < tempParent[i + 1].index){
+            this.parent.children.splice(i+1, 0 ,this.target)
+            break
+          } else if(this.target.index < tempParent[i].index){
+            this.parent.children.splice(i, 0 ,this.target)
+            break
+          }
+        }
+      }
+    }
+    redo(){
+      for(let i = 0; i < this.parent.children.length; i++){
+        if(this.target.id === this.parent.children[i].id){
+          this.parent.children.splice(i, 1)
+          break
+        }
+      }
+    }
+  }
+
+class UndoRedoWrapper {
+  constructor() {
+    this.undoStack = new Stack();
+    this.redoStack = new Stack();
+  }
+  /**
+   * @description: 用于存储需要的数据
+   * @param {*} key
+   * @param {*} value
+   * @Author: 
+   * @return {*}
+   */  
+  save(key, value) {
+    this[key] = value;
+  }
+
+  do(action) {
+    // 每一次操作元素，直接将当前操作存入undo栈中
+    this.undoStack.push(action);
+    // 每次操作一次后redo栈要进行清空操作
+    this.redoStack.toEmpty() 
+  }
+  undo(){
+    if(this.undoStack.count <=0){
+      return
+    }
+    const action = this.undoStack.pop();
+    action.undo(); // 元素本身的undo操作
+    this.redoStack.push(action);
+  }
+  redo(){
+    if(this.redoStack.count <=0){
+      return
+    }
+    const action = this.redoStack.pop();
+    action.redo();// 元素本身的redo操作
+    this.undoStack.push(action);
+  }
 }
 
-export { useDataShare, useUpdated };
+export { AddNode,UpdateNode,RemoveNode, UndoRedoWrapper };

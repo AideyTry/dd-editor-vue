@@ -1,0 +1,28 @@
+
+.header-wraper[data-v-d09e9d1a] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 45px;
+  line-height: 45px;
+  background-color: #eee;
+}
+.toolbar-icon[data-v-d09e9d1a] {
+  margin-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+.toolbar-icon-default[data-v-d09e9d1a] {
+  opacity: 0.5;
+}
+
+
+
+/*# sourceMappingURL=index40bde960.css.map*/
